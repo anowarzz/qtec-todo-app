@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddTodoModal = () => {
+const AddTodoModal = ({ setShowModal }) => {
   return (
     <div>
       <div className=" w-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-400 bg-opacity-80 bg-blur-xl">
@@ -50,7 +50,10 @@ const AddTodoModal = () => {
           </div>
 
           <div className="mt-16 flex justify-between gap-4 lg:mt-10">
-            <button className="rounded bg-red-600 text-white/80 px-4 py-2 transition-all hover:text-white">
+            <button
+              onClick={() => setShowModal(false)}
+              className="rounded bg-red-600 text-white/80 px-4 py-2 transition-all hover:text-white"
+            >
               Cancel
             </button>
             <button

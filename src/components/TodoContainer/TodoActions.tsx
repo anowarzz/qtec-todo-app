@@ -1,6 +1,6 @@
-import React from "react"; 
+import React from "react";
 
-const TodoActions = () => {
+const TodoActions = ({ setShowModal }) => {
   return (
     <div className="flex items-center justify-between mb-6 mt-8 md:lg-8">
       <div>
@@ -19,10 +19,13 @@ const TodoActions = () => {
       </div>
 
       <div className="flex gap-2">
-        <button className="rounded-md bg-green-500 px-2 py-1 md:px-4 md:py-2 ">
+        <button
+          onClick={() => setShowModal(true)}
+          className="rounded-md bg-green-500 px-2 text-gray-200 py-1 md:px-4 md:py-2 hover:bg-green-600 transition-all duration-200"
+        >
           Add ToDo
         </button>
-        <button className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 ">
+        <button className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 hover:bg-red-600 transition-all duration-200 text-gray-200">
           Delete All Todo
         </button>
       </div>

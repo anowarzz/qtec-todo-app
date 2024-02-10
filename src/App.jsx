@@ -9,7 +9,6 @@ const App = () => {
       <Navbar />
       <HeroSection />
       <TodoContainer />
-      <AddTodoModal />
     </div>
   );
 };
