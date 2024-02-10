@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
+import AddTodoModal from "./components/TodoContainer/AddTodoModal";
 import TodoContainer from "./components/TodoContainer/TodoContainer";
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
       <Navbar />
       <HeroSection />
       <TodoContainer />
+      <AddTodoModal />
     </div>
   );
 };
