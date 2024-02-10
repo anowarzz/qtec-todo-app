@@ -10,7 +10,7 @@ const HeroSection = () => {
             <h1 className=" font-semibold text-center md:text-left text-[#09060c] text-2xl md:text-3xl lg:text-4xl mb-2">
               Turn Chaos into Order
             </h1>
-            <h1 className=" font-semibold text-center md:text-left text-[#09060c] text-2xl md:text-3xl lg:text-4xl my-2">
+            <h1 className=" font-semibold text-center md:text-left text-[#09060c] text-2xl md:text-3xl lg:text-4xl my-2 ">
               with QTEC TODO
             </h1>
           </div>
