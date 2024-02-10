@@ -1,13 +1,13 @@
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
-import TaskContainer from "./components/TaskContainer/TaskContainer";
+import TodoContainer from "./components/TodoContainer/TodoContainer";
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <HeroSection />
-      <TaskContainer />
+      <TodoContainer />
     </div>
   );
 };
