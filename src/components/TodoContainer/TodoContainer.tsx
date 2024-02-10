@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { TodoContext } from "../../context/TodoContext";
 import AddTodoModal from "./AddTodoModal";
 import TodoActions from "./TodoActions";
 import TodoList from "./TodoList";
@@ -6,6 +7,9 @@ import TodoList from "./TodoList";
 const TodoContainer = () => {
   // state to toggle add todo modal
   const [showModal, setShowModal] = useState(false);
+
+  const { todos } = useContext(TodoContext);
+
 
 
 
@@ -19,7 +23,7 @@ const TodoContainer = () => {
         </h1>
         <TodoActions setShowModal={setShowModal} />
 
-        <TodoList />
+        <TodoList Todos={todos} />
       </div>
     </div>
   );
