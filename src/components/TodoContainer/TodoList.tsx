@@ -1,10 +1,8 @@
 import React from "react";
 
-const TodoList = ({Todos}) => {
+const TodoList = ({ Todos }) => {
+  console.log(Todos);
 
-console.log(Todos);
-
-  
   return (
     <div>
       <div className="overflow-auto">
@@ -31,25 +29,22 @@ console.log(Todos);
           </thead>
 
           <tbody>
-            {Todos.map((todo) => (
-              <tr key={todo.id} className="border-b border-blue-400 [&>td]:align-baseline [&>td]:px-4 [&>td]:py-4">
+            {Todos?.map((todo, i) => (
+              <tr
+                key={todo.id}
+                className="border-b border-blue-400 [&>td]:align-baseline [&>td]:px-4 [&>td]:py-4"
+              >
                 <td>
-                  <p>1</p>
+                  <p>{i + 1}</p>
                 </td>
-                <td className="capitalize">ToDo Title</td>
+                <td className="capitalize">{todo.title}</td>
                 <td>
-                  <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Labore velit obcaecati quisquam ipsa explicabo rerum, vel
-                    repellendus iusto ducimus unde autem. Doloremque
-                    reprehenderit, explicabo at minima rem delectus iste
-                    distinctio.
-                  </div>
+                  <p>{todo.description}</p>
                 </td>
-                <td>
-                  <p>Completed</p>
+                <td className="text-sm">
+                  {todo.isCompleted ? "Completed" : <p>Incomplete</p>}
                 </td>
-                <td className="text-center">High</td>
+                <td className="text-center text-sm">{todo.priority}</td>
                 <td>
                   <div className="flex items-center justify-center space-x-3">
                     <button className="text-red-600 font-bold">Delete</button>
