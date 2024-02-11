@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Slide, toast } from "react-toastify";
 import { TodoContext } from "../../context/TodoContext";
 import AddTodoModal from "./AddTodoModal";
 import TodoActions from "./TodoActions";
@@ -20,9 +21,17 @@ const TodoContainer = () => {
       type: "ADD_TODO",
       payload: todo,
     });
-
-
-
+    toast.success(`Task added successfully`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
 
     handleCloseClick();
   };

@@ -16,7 +16,7 @@ const HeroSection = () => {
           </div>
           <p className="text-lg text-gray-500 text-wrap px-4 text-justify mt-4">
             Your personal task management tool. Organize your tasks{" "}
-            <br className="hidden md:block" /> and Start achieving more today
+            <br className="hidden md:block" /> and Start achieving more goals
             with QTec Todo.
           </p>
         </div>

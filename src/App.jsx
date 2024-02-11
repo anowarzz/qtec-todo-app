@@ -6,6 +6,9 @@ import TodoContainer from "./components/TodoContainer/TodoContainer";
 import { TodoContext } from "./context/TodoContext";
 import { todoReducer } from "./reducer/todoReducer";
 import { initialTodo } from "./utils/initialState";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 const App = () => {
   const [state, dispatch] = useReducer(todoReducer, initialTodo);
@@ -16,6 +19,7 @@ const App = () => {
       <HeroSection />
       <TodoContainer />
       <Footer />
+        <ToastContainer />
     </TodoContext.Provider>
   );
 };

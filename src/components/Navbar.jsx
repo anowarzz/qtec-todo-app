@@ -6,7 +6,9 @@ const Navbar = () => {
     <nav className="py-4 md:py-6 w-full  z-10 bg-gray-100">
       <div className="flex items-center justify-between px-4">
         <div className="container mx-auto px-4 md:px-6 flex  items-center gap-3">
-          <a href="/">
+          <a href="/" onClick={(e) => {
+            e.preventDefault();
+          }}>
             <h5 className="text-2xl font-bold md:text-3xl lg:text-4xl">
               QTEC TODO
             </h5>
