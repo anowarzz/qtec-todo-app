@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-const AddTodoModal = ({ setShowModal }) => {
+const AddTodoModal = ({ setShowModal, onSaveTodo }) => {
+  // Storing the todo field values
+  const [todo, setTodo] = useState({
+    id: crypto.randomUUID(),
+    title: "",
+    description: "",
+    priority: "",
+    isCompleted: false,
+  });
+
+  // Handling the input field values
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setTodo({
+      ...todo,
+      [name]: value,
+    });
+  };
+
+  // // storing the todo in the local storage
+  // const storeTodo = (todo) => {
+  //   let todos = localStorage.getItem("todos");
+  //   if (todos) {
+  //     todos = JSON.parse(todos);
+  //     todos.push(todo);
+  //     localStorage.setItem("todos", JSON.stringify(todos));
+  //   } else {
+  //     localStorage.setItem("todos", JSON.stringify([todo]));
+  //   }
+
   return (
     <div>
       <div className=" w-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-400 bg-opacity-80 bg-blur-xl">
@@ -18,6 +49,8 @@ const AddTodoModal = ({ setShowModal }) => {
                 type="text"
                 name="title"
                 id="title"
+                value={todo.title}
+                onChange={handleChange}
               />
             </div>
 
@@ -28,6 +61,8 @@ const AddTodoModal = ({ setShowModal }) => {
                 required
                 name="description"
                 id="description"
+                value={todo.description}
+                onChange={handleChange}
               ></textarea>
             </div>
 
@@ -39,6 +74,8 @@ const AddTodoModal = ({ setShowModal }) => {
                   required
                   name="priority"
                   id="priority"
+                  value={todo.priority}
+                  onChange={handleChange}
                 >
                   <option value="">Select Priority</option>
                   <option value="Low">Low</option>
@@ -57,6 +94,7 @@ const AddTodoModal = ({ setShowModal }) => {
               Cancel
             </button>
             <button
+              onClick={(e) => onSaveTodo(todo, e)}
               type="submit"
               className="rounded bg-green-600 text-white/80 px-4 py-2 transition-all hover:text-white"
             >
