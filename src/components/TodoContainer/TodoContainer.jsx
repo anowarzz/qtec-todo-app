@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { TodoContext } from "../../context/TodoContext";
 import { toastOptions } from "../../utils/toastOptions";
 import AddTodoModal from "./AddTodoModal";
+import NoTodoFound from "./NoTodoFound";
 import TodoActions from "./TodoActions";
 import TodoList from "./TodoList";
 
@@ -103,7 +104,18 @@ const TodoContainer = () => {
         </h1>
         <TodoActions setShowModal={setShowAddModal} />
 
-        <TodoList onEdit={handleEditTodo} onDelete={handleDeleteTask} />
+          {
+            todos.length > 0 ?   
+              <TodoList
+                todos={todos}
+                onEditTodo={handleEditTodo}
+                onDeleteTodo={handleDeleteTask}
+              /> : <NoTodoFound />
+          
+          }
+
+
+   
       </div>
     </div>
   );

@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../../context/TodoContext";
+/* eslint-disable react/prop-types */
+
 import { getPriorityClass } from "../../utils/getPriorityClass";
 
-const TodoList = ({ onEdit, onDelete }) => {
-  const { state } = useContext(TodoContext);
-  const Todos = state.todos;
-
+const TodoList = ({ todos, onEditTodo, onDeleteTodo }) => {
   return (
     <div>
       <div className="overflow-auto">
@@ -32,7 +29,7 @@ const TodoList = ({ onEdit, onDelete }) => {
           </thead>
 
           <tbody>
-            {Todos?.map((todo, i) => (
+            {todos?.map((todo, i) => (
               <tr
                 key={todo.id}
                 className="border-b border-blue-400 [&>td]:align-baseline [&>td]:px-4 [&>td]:py-4"
@@ -67,14 +64,15 @@ const TodoList = ({ onEdit, onDelete }) => {
                 <td>
                   <div className="flex items-center   justify-center space-x-3">
                     <button
-                      onClick={() => onDelete(todo)}
+                      onClick={() => onDeleteTodo(todo)}
                       className="bg-red-500 hover:bg-red-700 hover:text-white/90 p-1 px-2"
                     >
                       Delete
                     </button>
-                    <button 
-                    onClick={() => onEdit(todo)}
-                    className="bg-gray-300 hover:bg-gray-500 hover:text-gray-100 p-1 px-2">
+                    <button
+                      onClick={() => onEditTodo(todo)}
+                      className="bg-gray-300 hover:bg-gray-500 hover:text-gray-100 p-1 px-2"
+                    >
                       Edit
                     </button>
                   </div>

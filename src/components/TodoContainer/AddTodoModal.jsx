@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+
+import { useState } from "react";
 
 const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
   // Storing the todo field values
   const [todo, setTodo] = useState(
-    todoToEdit || 
-    {
-    id: crypto.randomUUID(),
-    title: "",
-    description: "",
-    priority: "",
-    isCompleted: false,
-  });
+    todoToEdit || {
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      priority: "",
+      isCompleted: false,
+    }
+  );
 
   // Handling the input field values
   const handleChange = (event) => {
@@ -23,10 +25,8 @@ const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
     });
   };
 
-// checking if the action is add or edit
+  // checking if the action is add or edit
   const isAdd = !todoToEdit;
-
-
 
   // // storing the todo in the local storage
   // const storeTodo = (todo) => {
