@@ -4,8 +4,6 @@ import { getPriorityClass } from "../../utils/getPriorityClass";
 const TodoList = ({ Todos }) => {
   console.log(Todos);
 
-
-
   return (
     <div>
       <div className="overflow-auto">
@@ -52,22 +50,26 @@ const TodoList = ({ Todos }) => {
                   )}
 
                   {!todo.isCompleted && (
-                    <button className="bg-red-500 p-1 rounded-md ">
+                    <button className="bg-red-500 text-white/80 p-1 rounded-md ">
                       Incomplete
                     </button>
                   )}
                 </td>
                 <td
-                  className={`text-center text-sm ${getPriorityClass(
+                  className={`text-center text-sm font-semibold ${getPriorityClass(
                     todo.priority
                   )}`}
                 >
                   {todo.priority}
                 </td>
                 <td>
-                  <div className="flex items-center justify-center space-x-3">
-                    <button className="text-red-600 font-bold">Delete</button>
-                    <button className="text-blue-500 font-bold">Edit</button>
+                  <div className="flex items-center font-semibold  justify-center space-x-3">
+                    <button className="text-red-500 hover:text-red-600 ">
+                      Delete
+                    </button>
+                    <button className="text-blue-500 hover:text-blue-600 ">
+                      Edit
+                    </button>
                   </div>
                 </td>
               </tr>

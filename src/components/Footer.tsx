@@ -1,10 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  //current year
-  const getYear = () => {
-    return new Date().getFullYear();
-  };
+
 
   return (
     <footer className="py-6 md:py-8">

@@ -8,10 +8,10 @@ const TodoContainer = () => {
   // state to toggle add todo modal
   const [showModal, setShowModal] = useState(false);
 
-  const { todos } = useContext(TodoContext);
+  // get todos from context and get the dispatch function
+  const { state, dispatch } = useContext(TodoContext);
 
-
-
+  const todos = state.todos;
 
   return (
     <div className=" px-2 md:px-4 mx-auto my-8 md:my-16">

@@ -4,7 +4,7 @@ export const getPriorityClass = (priority) => {
   } else if (priority === "Medium") {
     return "text-yellow-500";
   } else if (priority === "Low") {
-    return "text-green-500";
+    return "text-gray-500";
   } else {
     return "";
   }
