@@ -2,7 +2,7 @@
 
 import { getPriorityClass } from "../../utils/getPriorityClass";
 
-const TodoList = ({ todos, onEditTodo, onDeleteTodo }) => {
+const TodoList = ({ todos, onEditTodo, onDeleteTodo, onTodoComplete }) => {
   return (
     <div>
       <div className="overflow-auto">
@@ -43,13 +43,21 @@ const TodoList = ({ todos, onEditTodo, onDeleteTodo }) => {
                 </td>
                 <td className="text-sm ">
                   {todo.isCompleted && (
-                    <button className="bg-blue-500 hover:bg-blue-700 hover:text-white text-white/80 px-1 rounded-md">
+                    <button
+                    title="Mark as Incomplete"
+                      onClick={() => onTodoComplete(todo)}
+                      className="bg-blue-500 hover:bg-blue-700 hover:text-white text-white/80 p-1 rounded-md"
+                    >
                       Completed
                     </button>
                   )}
 
                   {!todo.isCompleted && (
-                    <button className="bg-red-500 text-white/80 px-1 rounded-md ">
+                    <button
+                    title="Mark as Complete"
+                      onClick={() => onTodoComplete(todo)}
+                      className={`bg-red-500 text-white/80 p-1 rounded-md hover`}
+                    >
                       Incomplete
                     </button>
                   )}

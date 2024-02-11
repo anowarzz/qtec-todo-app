@@ -38,6 +38,7 @@ const TodoContainer = () => {
       newTodo.description === "" ||
       newTodo.priority === ""
     ) {
+      // set error messages if the fields are empty
       return setErrors({
         ...errors,
         title: newTodo.title === "" ? "Title is required" : "",
@@ -46,7 +47,7 @@ const TodoContainer = () => {
         priority: newTodo.priority === "" ? "Priority is required" : "",
       });
     }
-
+    // add a todo
     if (isAdd) {
       dispatch({
         type: "ADD_TODO",
@@ -54,6 +55,7 @@ const TodoContainer = () => {
       });
       toast.success(`Todo added successfully`, toastOptions);
     } else {
+      // edit a todo
       dispatch({
         type: "EDIT_TODO",
         payload: newTodo,
@@ -66,13 +68,13 @@ const TodoContainer = () => {
   };
 
   // Editing a todo
-  const handleEditTodo = (task) => {
-    setTodoToEdit(task);
+  const handleEditTodo = (todo) => {
+    setTodoToEdit(todo);
     setShowAddModal(true);
   };
 
   // Deleting a Todo
-  const handleDeleteTask = (todo) => {
+  const handleDeleteTodo = (todo) => {
     {
       dispatch({
         type: "DELETE_TODO",
@@ -93,6 +95,20 @@ const TodoContainer = () => {
       });
       setShowConfirmModal(false);
       toast.success(`All Todos Deleted successfully`, toastOptions);
+    }
+  };
+
+  // Handling the Todo completion status
+  const handleTodoComplete = (todo) => {
+    dispatch({
+      type: "TOGGLE_TODO_COMPLETE",
+      payload: todo,
+    });
+
+    if (todo.isCompleted) {
+      toast.warn(`Todo marked as Incomplete`, toastOptions);
+    } else {
+      toast.success(`Todo marked as Completed`, toastOptions);
     }
   };
 
@@ -134,9 +150,10 @@ const TodoContainer = () => {
 
         {todos.length > 0 ? (
           <TodoList
+            onTodoComplete={handleTodoComplete}
             todos={todos}
             onEditTodo={handleEditTodo}
-            onDeleteTodo={handleDeleteTask}
+            onDeleteTodo={handleDeleteTodo}
           />
         ) : (
           <NoTodoFound />
