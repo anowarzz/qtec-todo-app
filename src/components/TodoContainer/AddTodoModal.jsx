@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
+const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
   // Storing the todo field values
   const [todo, setTodo] = useState(
     todoToEdit || {
@@ -104,7 +104,7 @@ const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
 
           <div className="mt-16 flex justify-between gap-4 lg:mt-10">
             <button
-              onClick={() => setShowModal(false)}
+              onClick={onClose}
               className="rounded bg-red-600 text-white/80 px-4 py-2 transition-all hover:text-white"
             >
               Cancel
@@ -114,7 +114,7 @@ const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
               type="submit"
               className="rounded bg-green-600 text-white/80 px-4 py-2 transition-all hover:text-white"
             >
-              Create New Todo
+             { isAdd ? "Add Todo" : "Save Changes" }
             </button>
           </div>
         </form>

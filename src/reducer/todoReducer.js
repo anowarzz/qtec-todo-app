@@ -4,12 +4,7 @@ const todoReducer = (state, action) => {
       return {
         todos: [action.payload, ...state.todos],
       };
-
-    case "DELETE_TODO":
-      return {
-        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
-      };
-
+      
     case "EDIT_TODO":
       return {
         todos: state.todos.map((todo) => {
@@ -19,6 +14,17 @@ const todoReducer = (state, action) => {
           return todo;
         }),
       };
+
+    case "DELETE_TODO":
+      return {
+        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
+      };
+
+      case "DELETE_ALL_TODO":
+      return {
+        todos: [],
+      };
+
 
     default:
       return state;

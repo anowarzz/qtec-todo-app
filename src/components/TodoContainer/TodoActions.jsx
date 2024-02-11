@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 
-const TodoActions = ({ setShowModal }) => {
+const TodoActions = ({ setShowModal, onDeleteAllTodo }) => {
   return (
     <div className="flex items-center justify-between mb-6 mt-8 md:lg-8">
       <div>
@@ -26,7 +26,9 @@ const TodoActions = ({ setShowModal }) => {
         >
           Add Todo
         </button>
-        <button className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 hover:bg-red-700 hover:text-gray-100 transition-all duration-200 text-gray-200">
+        <button
+        onClick={onDeleteAllTodo}
+        className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 hover:bg-red-700 hover:text-gray-100 transition-all duration-200 text-gray-200">
           Delete All Todo
         </button>
       </div>
