@@ -2,19 +2,17 @@ import React from "react";
 import { getPriorityClass } from "../../utils/getPriorityClass";
 
 const TodoList = ({ Todos }) => {
-  console.log(Todos);
-
   return (
     <div>
       <div className="overflow-auto">
         <table className="table-fixed overflow-auto xl:w-full">
           <thead>
             <tr>
-              <th className="p-4 pb-8 text-sm font-semibold  w-12 "></th>
+              <th className="p-4 pb-8 text-sm font-semibold  w-8 "></th>
               <th className="p-4 pb-8 text-sm font-semibold  w-48">
                 Todo Title
               </th>
-              <th className="p-4 pb-8 text-sm font-semibold  w-full">
+              <th className="p-4 pb-8 text-sm font-semibold w-full  md:w-3/6">
                 Description
               </th>
               <th className="p-4 pb-8 text-sm font-semibold  md:w-24">
@@ -39,18 +37,18 @@ const TodoList = ({ Todos }) => {
                   <p>{i + 1}</p>
                 </td>
                 <td className="capitalize ">{todo.title}</td>
-                <td className="">
+                <td>
                   <p>{todo.description}</p>
                 </td>
                 <td className="text-sm ">
                   {todo.isCompleted && (
-                    <button className="bg-blue-500 text-white/80 p-1 rounded-md">
+                    <button className="bg-blue-500 hover:bg-blue-700 hover:text-white text-white/80 px-1 rounded-md">
                       Completed
                     </button>
                   )}
 
                   {!todo.isCompleted && (
-                    <button className="bg-red-500 text-white/80 p-1 rounded-md ">
+                    <button className="bg-red-500 text-white/80 px-1 rounded-md ">
                       Incomplete
                     </button>
                   )}
@@ -63,11 +61,11 @@ const TodoList = ({ Todos }) => {
                   {todo.priority}
                 </td>
                 <td>
-                  <div className="flex items-center font-semibold  justify-center space-x-3">
-                    <button className="text-red-500 hover:text-red-600 ">
+                  <div className="flex items-center   justify-center space-x-3">
+                    <button className="bg-red-500 hover:bg-red-700 hover:text-white/90 p-1 px-2">
                       Delete
                     </button>
-                    <button className="text-blue-500 hover:text-blue-600 ">
+                    <button className="bg-gray-300 hover:bg-gray-500 hover:text-gray-100 p-1 px-2">
                       Edit
                     </button>
                   </div>
