@@ -139,8 +139,11 @@ const TodoContainer = () => {
     ? todos.filter((todo) => todo.priority === filterPriority)
     : todos;
 
-  
+  // total todos
+  const totalTodos = todos.length;
 
+  // completed todos
+  const completedTodos = todos.filter((todo) => todo.isCompleted).length;
 
   return (
     <div className=" px-2 md:px-4 mx-auto my-8 md:my-16">
@@ -153,7 +156,17 @@ const TodoContainer = () => {
         />
       )}
 
-      <div className="rounded-lg border-gray-200 border shadow-sm px-4 py-8 md:px-9 md:py-12">
+      <div className="relative rounded-lg border-gray-200 border shadow-sm px-4 py-8 md:px-9 md:py-12">
+        <div className="absolute top-2 left-4 space-x-3">
+          <span className="right-4 text-xs bg-gray-800 text-white p-1 px-2">
+            {" "}
+            Total Task - {totalTodos}
+          </span>
+          <span className="aright-6 text-xs bg-green-800 text-white p-1 px-2">
+            {" "}
+            Completed - {completedTodos}
+          </span>
+        </div>
         <h1 className="text-2xl md:text-3xl font-bold text-center my-2">
           Your Todo List
         </h1>
