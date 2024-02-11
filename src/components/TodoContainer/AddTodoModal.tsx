@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddTodoModal = ({ setShowModal, onSaveTodo }) => {
+const AddTodoModal = ({ setShowModal, onSaveTodo, errors }) => {
   // Storing the todo field values
   const [todo, setTodo] = useState({
     id: crypto.randomUUID(),
@@ -52,6 +52,9 @@ const AddTodoModal = ({ setShowModal, onSaveTodo }) => {
                 value={todo.title}
                 onChange={handleChange}
               />
+              {errors?.title && (
+                <p className="text-sm text-red-500">{errors.title}</p>
+              )}
             </div>
 
             <div className="space-y-2 lg:space-y-3">
@@ -64,6 +67,9 @@ const AddTodoModal = ({ setShowModal, onSaveTodo }) => {
                 value={todo.description}
                 onChange={handleChange}
               ></textarea>
+              {errors?.description && (
+                <p className="text-sm text-red-500">{errors.description}</p>
+              )}
             </div>
 
             <div className="grid-cols-2 gap-x-4 max-md:space-y-9 md:grid lg:gap-x-10 xl:gap-x-20">
@@ -82,6 +88,9 @@ const AddTodoModal = ({ setShowModal, onSaveTodo }) => {
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
                 </select>
+                {errors?.priority && (
+                  <p className="text-sm text-red-500">{errors.priority}</p>
+                )}
               </div>
             </div>
           </div>
