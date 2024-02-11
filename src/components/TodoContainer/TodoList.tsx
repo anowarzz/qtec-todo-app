@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../../context/TodoContext";
 import { getPriorityClass } from "../../utils/getPriorityClass";
 
-const TodoList = ({ Todos }) => {
+const TodoList = ({ onEdit, onDelete }) => {
+  const { state } = useContext(TodoContext);
+  const Todos = state.todos;
+
   return (
     <div>
       <div className="overflow-auto">
@@ -62,10 +66,15 @@ const TodoList = ({ Todos }) => {
                 </td>
                 <td>
                   <div className="flex items-center   justify-center space-x-3">
-                    <button className="bg-red-500 hover:bg-red-700 hover:text-white/90 p-1 px-2">
+                    <button
+                      onClick={() => onDelete(todo)}
+                      className="bg-red-500 hover:bg-red-700 hover:text-white/90 p-1 px-2"
+                    >
                       Delete
                     </button>
-                    <button className="bg-gray-300 hover:bg-gray-500 hover:text-gray-100 p-1 px-2">
+                    <button 
+                    onClick={() => onEdit(todo)}
+                    className="bg-gray-300 hover:bg-gray-500 hover:text-gray-100 p-1 px-2">
                       Edit
                     </button>
                   </div>

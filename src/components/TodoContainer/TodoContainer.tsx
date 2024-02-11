@@ -7,12 +7,15 @@ import TodoActions from "./TodoActions";
 import TodoList from "./TodoList";
 
 const TodoContainer = () => {
-  // state to toggle add todo modal
-  const [showModal, setShowModal] = useState(false);
-
   // get todos from context and get the dispatch function
   const { state, dispatch } = useContext(TodoContext);
   const todos = state.todos;
+
+  // state to toggle the Add Todo Modal
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  // state to store the todo that would be edited
+  const [todoToEdit, setTodoToEdit] = useState(null);
 
   // storing required error messages
   const [errors, setErrors] = useState({
@@ -22,30 +25,55 @@ const TodoContainer = () => {
   });
 
   // =======> Add or Edit a TODO ========> //
-  const handleAddEditTodo = (newTodo, event) => {
+  const handleAddEditTodo = (newTodo, event, isAdd) => {
     event.preventDefault();
 
-    if (newTodo.title === "" || newTodo.description === "" || newTodo.priority === "") {
+    if (
+      newTodo.title === "" ||
+      newTodo.description === "" ||
+      newTodo.priority === ""
+    ) {
       return setErrors({
         ...errors,
         title: newTodo.title === "" ? "Title is required" : "",
-        description: newTodo.description === "" ? "Description is required" : "",
+        description:
+          newTodo.description === "" ? "Description is required" : "",
         priority: newTodo.priority === "" ? "Priority is required" : "",
       });
     }
 
-    dispatch({
-      type: "ADD_TODO",
-      payload: newTodo,
-    });
-    toast.success(`Todo added successfully`, toastOptions);
+    if (isAdd) {
+      dispatch({
+        type: "ADD_TODO",
+        payload: newTodo,
+      });
+      toast.success(`Todo added successfully`, toastOptions);
+    } else {
+      dispatch({
+        type: "EDIT_TODO",
+        payload: newTodo,
+      });
+      toast.success(`Todo edited successfully`, toastOptions);
+    }
 
     handleCloseClick();
-    setErrors({
-      title: "",
-      description: "",
-      priority: "",
-    });
+  };
+
+  // Editing a todo
+  const handleEditTodo = (task) => {
+    setTodoToEdit(task);
+    setShowAddModal(true);
+  };
+
+  // Deleting a task
+  const handleDeleteTask = (todo) => {
+    {
+      dispatch({
+        type: "DELETE_TODO",
+        payload: todo,
+      });
+      toast.success(`Todo Deleted successfully`, toastOptions);
+    }
   };
 
   // Closing the add / edit modal
@@ -55,16 +83,17 @@ const TodoContainer = () => {
       description: "",
       priority: "",
     });
-    setShowModal(false);
+    setShowAddModal(false);
   };
 
   return (
     <div className=" px-2 md:px-4 mx-auto my-8 md:my-16">
-      {showModal && (
+      {showAddModal && (
         <AddTodoModal
+          todoToEdit={todoToEdit}
           errors={errors}
           onSaveTodo={handleAddEditTodo}
-          setShowModal={setShowModal}
+          setShowModal={setShowAddModal}
         />
       )}
 
@@ -72,9 +101,9 @@ const TodoContainer = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-center my-2">
           Your Todo List
         </h1>
-        <TodoActions setShowModal={setShowModal} />
+        <TodoActions setShowModal={setShowAddModal} />
 
-        <TodoList Todos={todos} />
+        <TodoList onEdit={handleEditTodo} onDelete={handleDeleteTask} />
       </div>
     </div>
   );

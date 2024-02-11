@@ -1,5 +1,5 @@
 import { Slide } from "react-toastify";
-const toastOptions = {
+export const toastOptions = {
   position: "top-right",
   autoClose: 2000,
   hideProgressBar: true,
@@ -11,4 +11,3 @@ const toastOptions = {
   transition: Slide,
 };
 
-export {toastOptions}

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-const AddTodoModal = ({ setShowModal, onSaveTodo, errors }) => {
+const AddTodoModal = ({ setShowModal, onSaveTodo, errors, todoToEdit }) => {
   // Storing the todo field values
-  const [todo, setTodo] = useState({
+  const [todo, setTodo] = useState(
+    todoToEdit || 
+    {
     id: crypto.randomUUID(),
     title: "",
     description: "",
@@ -20,6 +22,11 @@ const AddTodoModal = ({ setShowModal, onSaveTodo, errors }) => {
       [name]: value,
     });
   };
+
+// checking if the action is add or edit
+  const isAdd = !todoToEdit;
+
+
 
   // // storing the todo in the local storage
   // const storeTodo = (todo) => {
@@ -103,7 +110,7 @@ const AddTodoModal = ({ setShowModal, onSaveTodo, errors }) => {
               Cancel
             </button>
             <button
-              onClick={(e) => onSaveTodo(todo, e)}
+              onClick={(e) => onSaveTodo(todo, e, isAdd)}
               type="submit"
               className="rounded bg-green-600 text-white/80 px-4 py-2 transition-all hover:text-white"
             >
