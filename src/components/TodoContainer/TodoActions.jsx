@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
 
-
-const TodoActions = ({ setShowModal, onDeleteAllTodo }) => {
+const TodoActions = ({ setShowModal, onDeleteAllTodo, onFilterTodo }) => {
   return (
     <div className="flex items-center justify-between mb-6 mt-8 md:lg-8">
       <div>
         <div className="flex items-stretch space-x-4">
           <select
-            className="cursor-pointer rounded-md border py-2 px-2 text-center text-gray-800"
-            name="sortBy"
-            id="sortBy"
+            onChange={(e) => onFilterTodo(e.target.value)}
+            className="cursor-pointer rounded-md border w-5/6 md:w-auto py-2 px-2 text-center text-gray-800"
+            name="filterBy"
+            id="filterBy"
           >
-            <option value="">Sort by Priority</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
+            <option value="">Filter by Priority - All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
           </select>
         </div>
       </div>
@@ -27,8 +27,9 @@ const TodoActions = ({ setShowModal, onDeleteAllTodo }) => {
           Add Todo
         </button>
         <button
-        onClick={onDeleteAllTodo}
-        className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 hover:bg-red-700 hover:text-gray-100 transition-all duration-200 text-gray-200">
+          onClick={onDeleteAllTodo}
+          className="rounded-md bg-red-500 px-2 md:px-4 py-1 md:py-2 hover:bg-red-700 hover:text-gray-100 transition-all duration-200 text-gray-200"
+        >
           Delete All Todo
         </button>
       </div>

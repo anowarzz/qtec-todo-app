@@ -128,6 +128,20 @@ const TodoContainer = () => {
     setShowConfirmModal(false);
   };
 
+  // Filtering the todos based on priority
+  const [filterPriority, setFilterPriority] = useState(null);
+
+  const handleFilterTodo = (priority) => {
+    setFilterPriority(priority);
+  };
+
+  const filteredTodos = filterPriority
+    ? todos.filter((todo) => todo.priority === filterPriority)
+    : todos;
+
+  
+
+
   return (
     <div className=" px-2 md:px-4 mx-auto my-8 md:my-16">
       {showAddModal && (
@@ -144,14 +158,15 @@ const TodoContainer = () => {
           Your Todo List
         </h1>
         <TodoActions
+          onFilterTodo={handleFilterTodo}
           onDeleteAllTodo={() => setShowConfirmModal(true)}
           setShowModal={setShowAddModal}
         />
 
-        {todos.length > 0 ? (
+        {filteredTodos?.length > 0 ? (
           <TodoList
             onTodoComplete={handleTodoComplete}
-            todos={todos}
+            todos={filteredTodos}
             onEditTodo={handleEditTodo}
             onDeleteTodo={handleDeleteTodo}
           />
