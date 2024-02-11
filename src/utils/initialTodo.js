@@ -13,7 +13,7 @@ const initialTodo = [
     description:
       "Complete the JavaScript exercise by Friday. Make sure to test the code thoroughly and handle any edge cases.",
     priority: "Medium",
-    isCompleted: false,
+    isCompleted: true,
   },
   {
     id: crypto.randomUUID(),
@@ -29,7 +29,7 @@ const initialTodo = [
     description:
       "Create slides for the upcoming meeting. Include relevant data, charts, and visuals to make the presentation engaging.",
     priority: "High",
-    isCompleted: false,
+    isCompleted: true,
   },
   {
     id: crypto.randomUUID(),

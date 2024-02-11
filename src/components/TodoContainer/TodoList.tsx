@@ -1,7 +1,10 @@
 import React from "react";
+import { getPriorityClass } from "../../utils/getPriorityClass";
 
 const TodoList = ({ Todos }) => {
   console.log(Todos);
+
+
 
   return (
     <div>
@@ -37,14 +40,30 @@ const TodoList = ({ Todos }) => {
                 <td>
                   <p>{i + 1}</p>
                 </td>
-                <td className="capitalize">{todo.title}</td>
-                <td>
+                <td className="capitalize ">{todo.title}</td>
+                <td className="">
                   <p>{todo.description}</p>
                 </td>
-                <td className="text-sm">
-                  {todo.isCompleted ? "Completed" : <p>Incomplete</p>}
+                <td className="text-sm ">
+                  {todo.isCompleted && (
+                    <button className="bg-blue-500 text-white/80 p-1 rounded-md">
+                      Completed
+                    </button>
+                  )}
+
+                  {!todo.isCompleted && (
+                    <button className="bg-red-500 p-1 rounded-md ">
+                      Incomplete
+                    </button>
+                  )}
                 </td>
-                <td className="text-center text-sm">{todo.priority}</td>
+                <td
+                  className={`text-center text-sm ${getPriorityClass(
+                    todo.priority
+                  )}`}
+                >
+                  {todo.priority}
+                </td>
                 <td>
                   <div className="flex items-center justify-center space-x-3">
                     <button className="text-red-600 font-bold">Delete</button>
