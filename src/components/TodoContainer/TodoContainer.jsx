@@ -157,7 +157,7 @@ const TodoContainer = () => {
 
       <div className="relative rounded-lg border-gray-200 border shadow-sm px-4 py-8 md:px-9 md:py-12">
         <div className="absolute top-2 left-4 space-x-3">
-          <span className="right-4 text-xs bg-gray-800 text-white p-1 px-2">
+          <span className="right-4 text-xs bg-gray-800 dark:bg-gray-600 text-white p-1 px-2">
             {" "}
             Total Task - {totalTodos}
           </span>

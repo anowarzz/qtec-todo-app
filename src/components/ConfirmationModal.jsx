@@ -2,7 +2,7 @@
 const ConfirmationModal = ({ onClose, onDeleteConfirm }) => {
   return (
     <div className=" w-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ">
-      <div className="mx-auto my-10 w-4/5 md:w-96 lg:min-w-[540px] h-auto transform   rounded-xl bg-gray-200 bg-opacity-80 bg-blur-xl p-9 max-md:px-4 lg:my-10 ">
+      <div className="mx-auto my-10 w-4/5 md:w-96 lg:min-w-[540px] h-auto transform  dark:bg-gray-800 rounded-xl bg-gray-200 bg-opacity-80 bg-blur-xl p-9 max-md:px-4 lg:my-10 ">
         <h2 className="mb-9 text-center text-2xl font-bold  lg:mb-8 lg:text-[28px]">
           Are You Sure To Delete All Todos ?
         </h2>

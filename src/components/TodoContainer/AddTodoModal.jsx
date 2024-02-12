@@ -28,21 +28,10 @@ const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
   // checking if the action is add or edit
   const isAdd = !todoToEdit;
 
-  // // storing the todo in the local storage
-  // const storeTodo = (todo) => {
-  //   let todos = localStorage.getItem("todos");
-  //   if (todos) {
-  //     todos = JSON.parse(todos);
-  //     todos.push(todo);
-  //     localStorage.setItem("todos", JSON.stringify(todos));
-  //   } else {
-  //     localStorage.setItem("todos", JSON.stringify([todo]));
-  //   }
-
   return (
     <div>
-      <div className=" w-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-400 bg-opacity-80 bg-blur-xl">
-        <form className="mx-auto my-10 w-full h-auto transform scale-75  md:scale-90  max-w-[740px]   rounded-xl border bg-gray-100 p-9 max-md:px-4 lg:my-20 lg:p-11">
+      <div className=" w-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-400 dark:bg-zinc-700 dark:bg-opacity-30   bg-opacity-80 bg-blur-xl">
+        <form className="mx-auto my-10 w-full h-auto transform scale-75  md:scale-90  max-w-[740px]   rounded-xl border dark:bg-gray-800 dark:text-white/90 bg-gray-100 p-9 max-md:px-4 lg:my-20 lg:p-11">
           <h2 className="mb-9 text-center text-2xl font-bold lg:mb-8 lg:text-[28px]">
             Create Todo
           </h2>
@@ -51,7 +40,7 @@ const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
             <div className="space-y-2 lg:space-y-3">
               <label htmlFor="title">Title</label>
               <input
-                className="block w-full rounded-md  px-3 py-2.5"
+                className="block w-full rounded-md  px-3 py-2.5 dark:text-black"
                 required
                 type="text"
                 name="title"
@@ -67,7 +56,7 @@ const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
             <div className="space-y-2 lg:space-y-3">
               <label htmlFor="description">Description</label>
               <textarea
-                className="block min-h-[120px] w-full rounded-md  px-3 py-2.5 lg:min-h-[180px]"
+                className="block min-h-[120px] w-full rounded-md  px-3 py-2.5 lg:min-h-[180px] dark:text-black"
                 required
                 name="description"
                 id="description"
@@ -83,7 +72,7 @@ const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
               <div className="space-y-2 lg:space-y-3">
                 <label htmlFor="priority">Priority</label>
                 <select
-                  className="block w-full cursor-pointer rounded-md px-3 py-2.5"
+                  className="block w-full cursor-pointer rounded-md px-3 py-2.5 dark:text-black"
                   required
                   name="priority"
                   id="priority"
@@ -114,7 +103,7 @@ const AddTodoModal = ({ onClose, onSaveTodo, errors, todoToEdit }) => {
               type="submit"
               className="rounded bg-green-600 text-white/80 px-4 py-2 transition-all hover:text-white"
             >
-             { isAdd ? "Add Todo" : "Save Changes" }
+              {isAdd ? "Add Todo" : "Save Changes"}
             </button>
           </div>
         </form>

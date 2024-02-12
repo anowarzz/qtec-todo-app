@@ -1,24 +1,15 @@
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
-import TodoContainer from "./components/TodoContainer/TodoContainer";
-import TodoProvider from "./context/TodoProvider";
+import HomePage from "./pages/HomePage";
+import { ThemeContext } from "./context/ThemeContext";
+import { useState } from "react";
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <>
-      <Navbar />
-      <HeroSection />
-
-      <TodoProvider>
-        <TodoContainer />
-      </TodoProvider>
-
-      <Footer />
-      <ToastContainer />
-    </>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+      <HomePage />
+    </ThemeContext.Provider>
   );
 };
 
