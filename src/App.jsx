@@ -1,24 +1,24 @@
-import { useReducer } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import TodoContainer from "./components/TodoContainer/TodoContainer";
-import { TodoContext } from "./context/TodoContext";
-import { initialState, todoReducer } from "./reducer/todoReducer";
+import TodoProvider from "./context/TodoProvider";
 
 const App = () => {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
-
   return (
-    <TodoContext.Provider value={{ state, dispatch }}>
+    <>
       <Navbar />
       <HeroSection />
-      <TodoContainer />
+
+      <TodoProvider>
+        <TodoContainer />
+      </TodoProvider>
+
       <Footer />
       <ToastContainer />
-    </TodoContext.Provider>
+    </>
   );
 };
 

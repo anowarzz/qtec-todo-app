@@ -1,44 +1,41 @@
 const todoReducer = (state, action) => {
+  let updatedState;
+
   switch (action.type) {
     case "ADD_TODO":
-      return {
-        todos: [action.payload, ...state.todos],
-      };
+      updatedState = [...state, action.payload];
+      break;
 
     case "EDIT_TODO":
-      return {
-        todos: state.todos.map((todo) => {
-          if (todo.id === action.payload.id) {
-            return action.payload;
-          }
-          return todo;
-        }),
-      };
+      updatedState = state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, ...action.payload }
+          : todo
+      );
+      break;
 
     case "DELETE_TODO":
-      return {
-        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
-      };
+      updatedState = state.filter((todo) => todo.id !== action.payload.id);
+      break;
 
     case "DELETE_ALL_TODO":
-      return {
-        todos: [],
-      };
+      updatedState = [];
+      break;
 
-    // toggle complete todo
     case "TOGGLE_TODO_COMPLETE":
-      return {
-        todos: state.todos.map((todo) => {
-          if (todo.id === action.payload.id) {
-            return { ...todo, isCompleted: !todo.isCompleted };
-          } else {
-            return todo;
-          }
-        }),
-      };
+      updatedState = state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      );
+      break;
+
     default:
       return state;
   }
+
+  localStorage.setItem("todos", JSON.stringify(updatedState));
+  return updatedState;
 };
 
 export { todoReducer };

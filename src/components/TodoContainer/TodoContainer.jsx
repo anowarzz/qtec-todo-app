@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { TodoContext } from "../../context/TodoContext";
+import { TodoContext } from "../../context/TodoProvider";
 import { toastOptions } from "../../utils/toastOptions";
 import ConfirmationModal from "../ConfirmationModal";
 import AddTodoModal from "./AddTodoModal";
@@ -10,8 +10,7 @@ import TodoList from "./TodoList";
 
 const TodoContainer = () => {
   // get todos from context and get the dispatch function
-  const { state, dispatch } = useContext(TodoContext);
-  const todos = state.todos;
+  const { state: todos, dispatch } = useContext(TodoContext);
 
   // state to toggle the Add/Edit Todo Modal
   const [showAddModal, setShowAddModal] = useState(false);
