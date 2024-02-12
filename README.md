@@ -1,8 +1,17 @@
-# React + Vite
+# QTEC TODO
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###### Manage your daily tasks and keep track of your important todos easily with Qtech web app
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add your task with title and description
+- Edit your task
+- Delete a task
+- Delete all tasks at once
+- Mark Task as Completed / Incomplete
+- Persistance of your todos in local storage so never lose anything through refreshes
+- Light Mode and Dark Mode View
+
+## Live Link
+
+[QTec Todo](https://qtec-todo-app-livid.vercel.app/)
