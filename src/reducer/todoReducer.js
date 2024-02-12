@@ -3,14 +3,12 @@ const todoReducer = (state, action) => {
 
   switch (action.type) {
     case "ADD_TODO":
-      updatedState = [...state, action.payload];
+      updatedState = [action.payload, ...state];
       break;
 
     case "EDIT_TODO":
       updatedState = state.map((todo) =>
-        todo.id === action.payload.id
-          ? { ...todo, ...action.payload }
-          : todo
+        todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
       );
       break;
 
@@ -25,7 +23,7 @@ const todoReducer = (state, action) => {
     case "TOGGLE_TODO_COMPLETE":
       updatedState = state.map((todo) =>
         todo.id === action.payload.id
-          ? { ...todo, completed: !todo.completed }
+          ? { ...todo, isCompleted: !todo.isCompleted }
           : todo
       );
       break;
