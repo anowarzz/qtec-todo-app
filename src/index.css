@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-.dark{
-    @apply bg-[#121212] text-white
+.dark {
+  background: linear-gradient(to right, #0f2027, #0b252d, #3c2e18);
+  color: white;
 }

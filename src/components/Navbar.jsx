@@ -29,9 +29,9 @@ const Navbar = () => {
             className="pr-4 md:pr-8"
           >
             {darkMode ? (
-              <IoSunnyOutline className="text-2xl" />
+              <IoSunnyOutline className="text-2xl md:text-3xl" />
             ) : (
-              <FiMoon className="text-2xl" />
+              <FiMoon className="text-2xl md:text-3xl" />
             )}
           </button>
         </div>
