@@ -136,14 +136,14 @@ const TodoContainer = () => {
   };
 
   const filteredTodos = filterPriority
-    ? todos.filter((todo) => todo.priority === filterPriority)
+    ? todos?.filter((todo) => todo.priority === filterPriority)
     : todos;
 
   // total todos
-  const totalTodos = todos.length;
+  const totalTodos = todos?.length;
 
   // completed todos
-  const completedTodos = todos.filter((todo) => todo.isCompleted).length;
+  const completedTodos = todos?.filter((todo) => todo.isCompleted).length;
 
   return (
     <div className=" px-2 md:px-4 mx-auto my-8 md:my-16">
